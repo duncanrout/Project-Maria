@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Home = (props) => (
     <div>
-        home page!
+        yeah yeah yeaeyayeayeayea
     </div>
   );
 

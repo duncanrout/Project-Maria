@@ -6,7 +6,8 @@ import {
     Switch,
 } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import {Home} from './pages/home.js';
+import { Home } from './pages/home.js';
+import { About } from './pages/about.js';
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
         <div id="page-body">
           <Switch>
             <Route path="/home" component={Home} />
-          </Switch>
+           </Switch>
+           <Switch>
+             <Route path="/about" component={About} />
+           </Switch>
         </div>
       </div>
     </Router>
