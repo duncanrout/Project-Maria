@@ -1,8 +1,7 @@
 import React from 'react';
 
-alert("this is gonna be the about page")
+//alert("this is gonna be the about page")
    
-
 export const About = (props) => (
     <div>
         <header>
@@ -15,6 +14,5 @@ export const About = (props) => (
     </div>
 
 );
-
 
 export default About;
