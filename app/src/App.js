@@ -10,6 +10,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 //pages
 import { Home } from './pages/home.js';
 import { About } from './pages/about.js';
+import { Form } from './pages/form.js';
 
 //components
 import { NavigationBar } from './components/NavigationBar';
@@ -26,6 +27,9 @@ function App() {
           <Switch>
             <Route path="/about" component={About} />
           </Switch>
+          <Switch>
+            <Route path="/form" component={Form} />
+         </Switch>
         </div>
       </div>
     </Router>

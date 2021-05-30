@@ -1,0 +1,11 @@
+#Box {
+    padding-top: 200px;
+    padding-right: 200px;
+    padding-bottom: 50px;
+    padding-left: 200px;
+    position: relative;
+}
+
+#Title {
+    padding-bottom: 50px;
+}
