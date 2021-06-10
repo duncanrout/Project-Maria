@@ -6,7 +6,7 @@ export const Form = (props) => (
 
     <div id="Box">
         <div id="Title">
-            <h1>Create Business</h1>
+            <h1>Business Application Form</h1>
         </div>
 
         <div className="form-group">
@@ -24,7 +24,7 @@ export const Form = (props) => (
             <input type="email" className="form-control" placeholder="ex: We are a business that does certain things." />
         </div>
 
-        <button type="submit" className="btn btn-dark btn-lg btn-block">Create!</button>
+        <button type="submit" className="btn btn-dark btn-lg btn-block">Submit</button>
         <p className="forgot-password text-right">
             Need <a href="#">help?</a>
         </p>

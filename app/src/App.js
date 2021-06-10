@@ -6,10 +6,6 @@ import {
     Switch,
 } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container';
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 //pages
 import { Home } from './pages/home.js';
@@ -26,7 +22,7 @@ function App() {
       <div className="App">
         <div id="page-body">
           <Switch>
-            <Route path="/" component={Home} />
+            <Route path="/home" component={Home} />
           </Switch>
           <Switch>
             <Route path="/about" component={About} />
