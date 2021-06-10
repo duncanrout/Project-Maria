@@ -11,17 +11,17 @@ export const Form = (props) => (
 
         <div className="form-group">
             <label>What is the name of your business?</label>
-            <input type="email" className="form-control" placeholder="ex: comp363" />
+            <input type="email" className="form-control" placeholder="ex: A Business Name" />
         </div>
 
         <div className="form-group">
             <label>When was the business founded?</label>
-            <input type="email" className="form-control" placeholder="ex: Nick Hayward" />
+            <input type="email" className="form-control" placeholder="ex: 2000" />
         </div>
 
         <div className="form-group">
-            <label>Temp?</label>
-            <input type="email" className="form-control" placeholder="ex: 5:30pm" />
+            <label>Tell us about your business.</label>
+            <input type="email" className="form-control" placeholder="ex: We are a business that does certain things." />
         </div>
 
         <button type="submit" className="btn btn-dark btn-lg btn-block">Create!</button>
@@ -29,4 +29,4 @@ export const Form = (props) => (
             Need <a href="#">help?</a>
         </p>
     </div>
-)
+);

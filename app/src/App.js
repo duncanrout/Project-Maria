@@ -17,7 +17,7 @@ import { NavigationBar } from './components/NavigationBar';
 
 function App() {
   return (
-      <Router>
+    <Router>
       <NavigationBar />
       <div className="App">
         <div id="page-body">
