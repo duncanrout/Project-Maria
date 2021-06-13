@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Jumbotron, Row, Col, Carousel } from 'react-bootstrap';
 
+//map import
+import { Map, Marker } from "pigeon-maps"
+
 function ControlledCarousel() {
   const [index, setIndex] = useState(0);
 
@@ -54,7 +57,11 @@ export const Home = (props) => (
         <Col xs={8}>
           <h1 class="display">Map of Businesses</h1>
           <p class="lead">This is a map that shows...</p>
-          <div id="mapid"></div>
+            <div id="mapid">
+               <Map height={300} defaultCenter={[41.9965705871582, -87.66297912597656]} defaultZoom={11}>
+                 <Marker width={50} anchor={[41.9965705871582, -87.66297912597656]} />
+               </Map>
+            </div>
         </Col>
         <Col>
           <h1 class="display">News</h1>
