@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Jumbotron, Row, Col, Carousel } from 'react-bootstrap';
+import './home.css';
 
 //map import
 import { Map, Marker } from "pigeon-maps"
@@ -80,16 +81,24 @@ function MarkerInfo() {
         <div>This is a...</div>
     )
 }
-
-export const Home = (props) => (
-    
-    <Container fluid>
-        <div class="jumbotron jumbotron-fluid">
+/*<div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">Jumbotron</h1>
                 <p class="lead">Soon to be an image</p>
             </div>
         </div>
+        */
+
+export const Home = (props) => (
+<div>
+   <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Jumbotron</h1>
+                <p class="lead">Soon to be an image</p>
+            </div>
+        </div>    
+
+<Container fluid>  
       <Row>
         <Col xs={9}>
           <h1 class="display">Map of Businesses</h1>
@@ -112,4 +121,5 @@ export const Home = (props) => (
         </Col>
       </Row>
   </Container>
+</div>
 );

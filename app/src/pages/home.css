@@ -10,3 +10,12 @@
 .alt {
     background-color: chartreuse;
 }
+
+.jumbotron{
+    background-image: url("../img/pic3.jpg");
+    background-size: cover; 
+    min-height: 300px;
+    height: 100%;
+    width: 100%;
+    
+}

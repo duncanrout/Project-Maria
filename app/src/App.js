@@ -15,27 +15,21 @@ import { Form } from './pages/form.js';
 //components
 import { NavigationBar } from './components/NavigationBar';
 
-// Firebase App (the core Firebase SDK) is always required and must be listed first
-import firebase from "firebase/app";
-// If you are using v7 or any earlier version of the JS SDK, you should import firebase using namespace import
-// import * as firebase from "firebase/app"
+//Firebase Package
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+import 'firebase/analytics';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-// If you enabled Analytics in your project, add the Firebase SDK for Analytics
-import "firebase/analytics";
+firebase.initializeApp({
+    //hidden config
+})
 
-// Add the Firebase products that you want to use
-import "firebase/auth";
-import "firebase/firestore";
-
-// TODO: Replace the following with your app's Firebase project configuration
-// For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
-const firebaseConfig = {
-    // ...
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+//const analytics = firebase.analytics();
 
 function App() {
   return (
