@@ -5,11 +5,10 @@ import React from 'react';
 export const About = (props) => (
     <div>
         <header>
-            ABOUT US
-            AMONG US
+            About goes here
         </header>
         <body>
-            <b1> WHY SPONGEBOB </b1>
+            <b1> ... </b1>
         </body>
     </div>
 

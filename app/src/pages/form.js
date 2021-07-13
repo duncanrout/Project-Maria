@@ -1,7 +1,7 @@
 import React from "react";
 import './form.css';
 
-
+//TODO (Interact form with Firebase, if(register company) => auth => show Form page)
 export const Form = (props) => (
 
     <div id="Box">

@@ -4,6 +4,7 @@ import { Container, Jumbotron, Row, Col, Carousel } from 'react-bootstrap';
 //map import
 import { Map, Marker } from "pigeon-maps"
 
+//News Container
 function ControlledCarousel() {
   const [index, setIndex] = useState(0);
 
@@ -50,28 +51,65 @@ function ControlledCarousel() {
   );
 }
 
+//Map
+function MyMap() {
+    const [center, setCenter] = useState([-15.2350, -54.9253])
+    const [zoom, setZoom] = useState(4.9)
+    return (
+        <Map
+            height={1000}
+            width={1200}
+            center={center}
+            zoom={zoom}
+            onBoundsChanged={({ center, zoom }) => {
+                setCenter(center)
+                setZoom(zoom)
+            }}
+            minZoom={4.5}        >
+            <Marker 
+                width={50}
+                anchor={[-14.2350, -51.9253]} 
+            />
+        </Map>
+    )
+}
+
+function MarkerInfo() {
+    //TODO (Search Feature, set up description template of marker)
+    return (
+        <div>This is a...</div>
+    )
+}
+
 export const Home = (props) => (
-  <Container fluid>
-    <Jumbotron>
+    
+    <Container fluid>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Jumbotron</h1>
+                <p class="lead">Soon to be an image</p>
+            </div>
+        </div>
       <Row>
-        <Col xs={8}>
+        <Col xs={9}>
           <h1 class="display">Map of Businesses</h1>
           <p class="lead">This is a map that shows...</p>
             <div id="mapid">
-               <Map height={300} defaultCenter={[41.9965705871582, -87.66297912597656]} defaultZoom={11}>
-                 <Marker width={50} anchor={[41.9965705871582, -87.66297912597656]} />
-               </Map>
+               <MyMap />
             </div>
         </Col>
         <Col>
-          <h1 class="display">News</h1>
+          <h1 class="display">News Container</h1>
           <p class="lead">Latest news relating to our businesses!</p>
-          <div class="news"></div>
-          <div class="news-carousel">
-            <ControlledCarousel />
-          </div>
+            <div class="news"></div>
+            <div class="news-carousel">
+              <ControlledCarousel />
+            </div>
+            <div id="info">
+              <h1 class="display">Info Container</h1>
+              <MarkerInfo />
+            </div>
         </Col>
       </Row>
-    </Jumbotron>
   </Container>
 );
