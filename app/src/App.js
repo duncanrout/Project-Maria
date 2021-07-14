@@ -27,8 +27,8 @@ firebase.initializeApp({
     //hidden config
 })
 
-const auth = firebase.auth();
-const firestore = firebase.firestore();
+//const auth = firebase.auth();
+//const firestore = firebase.firestore();
 //const analytics = firebase.analytics();
 
 function App() {
