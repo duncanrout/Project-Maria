@@ -114,10 +114,20 @@ export const Home = (props) => (
             <div class="news-carousel">
               <ControlledCarousel />
             </div>
-            <div id="info">
-              <h1 class="display">Info Container</h1>
-              <MarkerInfo />
-            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="fw-bold">Name</div>
+                     An item
+                </li>
+                <li class="list-group-item">
+                    <div class="fw-bold">Location</div>
+                     An item
+                </li>
+                <li class="list-group-item">
+                    <div class="fw-bold">About</div>
+                     An item
+                </li>
+            </ul>
         </Col>
       </Row>
   </Container>
