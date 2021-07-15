@@ -23,13 +23,15 @@ import 'firebase/analytics';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
+/*TODO (setup firebase)
 firebase.initializeApp({
     //hidden config
 })
 
-//const auth = firebase.auth();
-//const firestore = firebase.firestore();
-//const analytics = firebase.analytics();
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+const analytics = firebase.analytics();
+*/
 
 function App() {
   return (

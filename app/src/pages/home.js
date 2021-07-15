@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Container, Jumbotron, Row, Col, Carousel } from 'react-bootstrap';
 import './home.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //map import
 import { Map, Marker } from "pigeon-maps"
 
-//News Container
+//Carousel, appears in NewsContainer
 function ControlledCarousel() {
   const [index, setIndex] = useState(0);
 
@@ -52,14 +53,13 @@ function ControlledCarousel() {
   );
 }
 
-//Map
 function MyMap() {
     const [center, setCenter] = useState([-15.2350, -54.9253])
     const [zoom, setZoom] = useState(4.9)
     return (
         <Map
-            height={1000}
-            width={1200}
+            height={800}
+            width={1100}
             center={center}
             zoom={zoom}
             onBoundsChanged={({ center, zoom }) => {
@@ -75,61 +75,60 @@ function MyMap() {
     )
 }
 
-function MarkerInfo() {
-    //TODO (Search Feature, set up description template of marker)
+function NewsContainer() {
     return (
-        <div>This is a...</div>
-    )
-}
-/*<div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">Jumbotron</h1>
-                <p class="lead">Soon to be an image</p>
+        <div class="newsContainer">
+            <h1 class="display">News Container</h1>
+            <p class="lead">Latest news relating to our businesses!</p>
+            <div class="news-carousel">
+                <ControlledCarousel />
             </div>
         </div>
-        */
+    )
+}
 
+function MarkerInfo() {
+    return (
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="fw-bold">Name</div>
+                    An item
+            </li>
+            <li class="list-group-item">
+                <div class="fw-bold">Location</div>
+                    An item
+            </li>
+            <li class="list-group-item">
+                <div class="fw-bold">About</div>
+                    An item
+            </li>
+        </ul>
+    )
+}
+
+//Page
+//TODO (create box behind map, clean up right side of page)
 export const Home = (props) => (
-<div>
-   <div class="jumbotron jumbotron-fluid">
+    <div>
+        <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">Jumbotron</h1>
                 <p class="lead">Soon to be an image</p>
             </div>
         </div>    
 
-<Container fluid>  
-      <Row>
-        <Col xs={9}>
-          <h1 class="display">Map of Businesses</h1>
-          <p class="lead">This is a map that shows...</p>
-            <div id="mapid">
-               <MyMap />
-            </div>
-        </Col>
-        <Col>
-          <h1 class="display">News Container</h1>
-          <p class="lead">Latest news relating to our businesses!</p>
-            <div class="news"></div>
-            <div class="news-carousel">
-              <ControlledCarousel />
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="fw-bold">Name</div>
-                     An item
-                </li>
-                <li class="list-group-item">
-                    <div class="fw-bold">Location</div>
-                     An item
-                </li>
-                <li class="list-group-item">
-                    <div class="fw-bold">About</div>
-                     An item
-                </li>
-            </ul>
-        </Col>
-      </Row>
-  </Container>
-</div>
+        <div class="container-fluid">
+            <Row>
+                <Col xs={9}>
+                    <h1 class="display">Map of Businesses</h1>
+                    <p class="lead">This is a map that shows...</p>
+                    <MyMap />
+                </Col>
+                <Col>
+                    <NewsContainer />
+                    <MarkerInfo />
+                </Col>
+            </Row>
+        </div>
+    </div>
 );

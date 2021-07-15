@@ -19,3 +19,17 @@
     width: 100%;
     
 }
+
+.container-fluid {
+    background-color: lightblue;
+    color: black;
+}
+
+.mapid {
+    color: green;
+}
+
+/*Delete*/
+.mapContainer {
+    background-color: darkseagreen;
+}
