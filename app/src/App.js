@@ -61,6 +61,11 @@ function App() {
                     <RegisterPage />
                 </Route>
              </Switch>
+             <Switch>
+                <Route path="/registerc">
+                    <RegisterCompany />
+                </Route>
+             </Switch>
             </div>
           </div>
         </Router>
@@ -105,6 +110,69 @@ function SignIn() {
 function SignOut() {
     return auth.currentUser && (
         <button onClick={() => auth.signOut()} type="submit" class="btn btn-block btn-lg btn-dark">Sign Out</button>
+    )
+}
+
+//----------------------------------------------------------------------------------------------------
+
+//TODO
+function CompanyAbout(props) {
+    const { text, uid, companyAddress1 } = props.message;
+    const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+
+    return (
+        <div className={`message ${messageClass}`}>
+            
+            <p>{text}</p>
+            <p>{companyAddress1}</p>
+        </div>
+    )
+}
+
+
+function RegisterCompany() {
+    const companiesRef = firestore.collection('companies');
+    const query = companiesRef.orderBy('createdAt').limit(25);
+
+    const [companies] = useCollectionData(query, { idField: 'id' });
+
+    const [companyName, setCompanyName] = useState('');
+    const [companyAddress1, setCompanyAddress1] = useState('');
+
+    const sendData = async (e) => {
+        //prevent refresh
+        e.preventDefault()
+
+        const { uid } = auth.currentUser;
+
+        //creates new document to firestore database
+        await companiesRef.add({
+            text: companyName,
+            address1: companyAddress1,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            uid
+        })
+
+        setCompanyName('');
+        setCompanyAddress1('');
+    }
+
+    return (
+        <>
+            <div>
+                {companies && companies.map(msg => <CompanyAbout key={msg.id} message={msg} />)}
+            </div>
+            <div class="form-row"> 
+                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                    <input value={companyName} onChange={(e) => setCompanyName(e.target.value)} class="form-control form-control-lg" placeholder="Say hello!" />
+                    <input value={companyAddress1} onChange={(e) => setCompanyAddress1(e.target.value)} class="form-control form-control-lg" placeholder="Say hello!" />
+
+                </div>
+                <form class="col-12 col-md-3" onSubmit={sendData}>
+                    <button type="submit" class="btn btn-block btn-lg btn-dark"> Send </button>
+                </form>
+            </div>
+        </>
     )
 }
 
