@@ -117,14 +117,14 @@ function SignOut() {
 
 //TODO (Figure out companyAddress1 not popping up -> create all attributes -> create forms all forms -> clean up code -> style -> clean up code)
 function CompanyAbout(props) {
-    const { text, uid, companyAddress1 } = props.message;
+    const { text, uid, address1 } = props.message;
     const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
     return (
         <div className={`message ${messageClass}`}>
             
             <p>{text}</p>
-            <p>{companyAddress1}</p>
+            <p>{address1}</p>
         </div>
     )
 }
