@@ -57,12 +57,12 @@ function App() {
                 <Route path="/form" component={Form} />
              </Switch>
              <Switch>
-                <Route path="/register">
+                <Route path="/registerc">
                     <RegisterPage />
                 </Route>
              </Switch>
              <Switch>
-                <Route path="/registerc">
+                <Route path="/register">
                     <RegisterCompany />
                 </Route>
              </Switch>
@@ -129,7 +129,7 @@ function CompanyAbout(props) {
     )
 }
 
-
+//TODO (Make it so one must be signed in to view form)
 function RegisterCompany() {
     const companiesRef = firestore.collection('companies');
     const query = companiesRef.orderBy('createdAt').limit(25);
@@ -138,7 +138,17 @@ function RegisterCompany() {
 
     const [companyName, setCompanyName] = useState('');
     const [companyAddress1, setCompanyAddress1] = useState('');
-
+    const [companyFoundedYear, setCompanyFoundedYear] = useState('');
+    const [companyDescription, setCompanyDescription] = useState('');
+    const [companyAddress2, setCompanyAddress2] = useState('');
+    const [companyCity, setCompanyCity] = useState('');
+    const [companyPostal, setCompanyPostal] = useState('');
+    const [companyPhone1, setCompanyPhone1] = useState('');
+    const [companyPhone2, setCompanyPhone2] = useState('');
+    const [companyEmail, setCompanyEmail] = useState('');
+    const [companyDomain, setCompanyDomain] = useState('');
+    const [companyEmployeeCount, setCompanyEmployeeCount] = useState('');
+   
     const sendData = async (e) => {
         //prevent refresh
         e.preventDefault()
@@ -148,31 +158,113 @@ function RegisterCompany() {
         //creates new document to firestore database
         await companiesRef.add({
             text: companyName,
+            foundedYear: companyFoundedYear,
             address1: companyAddress1,
+            address2: companyAddress2,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            description: companyDescription,
+            city: companyCity,
+            postal: companyPostal,
+            phone1: companyPhone1,
+            phone2: companyPhone2,
+            email: companyEmail,
+            domain: companyDomain,
+            employeeCount: companyEmployeeCount,
             uid
         })
 
         setCompanyName('');
         setCompanyAddress1('');
+        setCompanyAddress2('');
+        setCompanyDescription('');
+        setCompanyCity('');
+        setCompanyPostal('');
+        setCompanyPhone1('');
+        setCompanyPhone2('');
+        setCompanyEmail('');
+        setCompanyDomain('');
+        setCompanyEmployeeCount('');
     }
 
     return (
-        <>
-            <div>
-                {companies && companies.map(msg => <CompanyAbout key={msg.id} message={msg} />)}
-            </div>
-            <div class="form-row"> 
-                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                    <input value={companyName} onChange={(e) => setCompanyName(e.target.value)} class="form-control form-control-lg" placeholder="Say hello!" />
-                    <input value={companyAddress1} onChange={(e) => setCompanyAddress1(e.target.value)} class="form-control form-control-lg" placeholder="Say hello!" />
+    <>
+        <div>
+            {companies && companies.map(msg => <CompanyAbout key={msg.id} message={msg} />)}
+        </div> 
 
-                </div>
-                <form class="col-12 col-md-3" onSubmit={sendData}>
-                    <button type="submit" class="btn btn-block btn-lg btn-dark"> Send </button>
-                </form>
+        <div id="Box">
+            <div id="Title">
+                <h1>Business Application Form</h1>
             </div>
-        </>
+
+            <div className="form-group">
+                <label>What is the name of your business?</label>
+                <input value={companyName} onChange={(e) => setCompanyName(e.target.value)} type="text" className="form-control" placeholder="ex: A Business Name" />
+            </div>
+
+            <div className="form-group">
+                <label>When was the business founded?</label>
+                <input value={companyFoundedYear} onChange={(e) => setCompanyFoundedYear(e.target.value)} type="text" className="form-control" placeholder="ex: 2000" />
+            </div>
+
+            <div className="form-group">
+                <label>Tell us about your business.</label>
+                <input value={companyDescription} onChange={(e) => setCompanyDescription(e.target.value)} type="text" className="form-control" placeholder="ex: We are a business that does certain things." />
+            </div>
+
+            <div className="form-group">
+                <label>What is your businesses' address?</label>
+                <input value={companyAddress1} onChange={(e) => setCompanyAddress1(e.target.value)} type="text" className="form-control" placeholder="ex: Av. abcdefg 1234" />
+            </div>
+
+            <div className="form-group">
+                <label>Does your business have a second address? (OPTIONAL)</label>
+                <input value={companyAddress2} onChange={(e) => setCompanyAddress2(e.target.value)} type="text" className="form-control" placeholder="ex: Av. abcdefg 5678" />
+            </div>
+
+            <div className="form-group">
+                <label>What is your business's City and Province?</label>
+                <input value={companyCity} onChange={(e) => setCompanyCity(e.target.value)} type="text" className="form-control" placeholder="ex: Sao Paulo, Sao Paulo" />
+            </div>
+
+            <div className="form-group">
+                <label>What is your business's Post Code?</label>
+                <input value={companyPostal} onChange={(e) => setCompanyPostal(e.target.value)} type="text" className="form-control" placeholder="ex: 12345-678" />
+            </div>
+
+            <div className="form-group">
+                <label>What is a good phone number to contact you at?</label>
+                <input value={companyPhone1} onChange={(e) => setCompanyPhone1(e.target.value)} type="text" className="form-control" placeholder="ex: 12 3456-7891" />
+            </div>
+
+            <div className="form-group">
+                <label>Does your business have a second phone number? (OPTIONAL) </label>
+                <input value={companyPhone2} onChange={(e) => setCompanyPhone2(e.target.value)} type="text" className="form-control" placeholder="ex: 12 3456-7891" />
+            </div>
+
+            <div className="form-group">
+                <label>Does your business have an email?</label>
+                <input value={companyEmail} onChange={(e) => setCompanyEmail(e.target.value)} type="email" className="form-control" placeholder="ex: johnDoe@1234.com" />
+            </div>
+
+            <div className="form-group">
+                <label>What is your business's website? (OPTIONAL)</label>
+                <input value={companyDomain} onChange={(e) => setCompanyDomain(e.target.value)} type="text" className="form-control" placeholder="ex: http://www.mywebsite.com.br" />
+            </div>
+
+            <div className="form-group">
+                <label>How many employees does your bussiness have? (OPTIONAL)</label>
+                <input value={companyEmployeeCount} onChange={(e) => setCompanyEmployeeCount(e.target.value)} type="text" className="form-control" placeholder="ex: 12345" />
+            </div>
+
+            <form onSubmit={sendData}>
+                        <button type="submit" class="btn btn-block btn-lg btn-dark"> Submit </button>
+                        <p className="forgot-password text-right">
+                        Need <a href="#">help?</a>
+                        </p>
+            </form>
+        </div>
+    </>
     )
 }
 
