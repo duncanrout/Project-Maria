@@ -72,6 +72,19 @@ function App() {
   );
 }
 
+/* //if user is logged in 
+function requireAuth(nextState, replace, next) {
+  if (!authenticated) {
+    replace({
+      pathname: "/login",
+      state: {nextPathname: nextState.location.pathname}
+    });
+  }
+  next();
+}
+*/
+
+
 //HomePage
 function RegisterPage() {
 
@@ -94,7 +107,6 @@ function RegisterPage() {
            </div>                                  
 }
 
-
 function SignIn() {
     const signInWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
@@ -115,10 +127,25 @@ function SignOut() {
 
 //----------------------------------------------------------------------------------------------------
 
-//TODO (Figure out companyAddress1 not popping up -> create all attributes -> create forms all forms -> clean up code -> style -> clean up code)
 function CompanyAbout(props) {
-    const { text, uid, address1 } = props.message;
+    const { text, uid, address1, city, description, domain, email, employeeCount, foundedYear, phone1, phone2, postal } = props.message;
     const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+
+    return (
+        <div className={`message ${messageClass}`}>
+            
+            <p>{text}</p>
+            <p>{address1}</p>
+            <p>{phone1}</p>
+        </div>
+    )
+}
+
+/*
+function CompanyAbout(props) {
+    const companiesRef = firestore.collection('companies').doc('on32Rde5G3ZYwWP8sWVP');
+    const doc = await companiesRef.get();
+    console.log('Document data:', doc.data());
 
     return (
         <div className={`message ${messageClass}`}>
@@ -128,9 +155,12 @@ function CompanyAbout(props) {
         </div>
     )
 }
+*/
 
 //TODO (Make it so one must be signed in to view form)
 function RegisterCompany() {
+
+
     const companiesRef = firestore.collection('companies');
     const query = companiesRef.orderBy('createdAt').limit(25);
 

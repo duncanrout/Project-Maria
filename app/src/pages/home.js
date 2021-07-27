@@ -109,6 +109,7 @@ function MarkerInfo() {
 //Page
 //TODO (create box behind map, clean up right side of page)
 export const Home = (props) => (
+
     <div>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
@@ -127,6 +128,7 @@ export const Home = (props) => (
                 <Col>
                     <NewsContainer />
                     <MarkerInfo />
+                    
                 </Col>
             </Row>
         </div>
